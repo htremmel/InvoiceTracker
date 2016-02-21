@@ -1,0 +1,2 @@
+D:\Dropbox\2-Projects\InvoiceTracker_2\bin\Debug\InvoiceTracker_2.exe.config
+D:\Dropbox\2-Projects\InvoiceTracker_2\bin\Debug\InvoiceTracker.exe.config
