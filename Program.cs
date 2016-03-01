@@ -10,7 +10,7 @@ namespace InvoiceTracker
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry point for the application.  Bonus comment.
         /// </summary>
         [STAThread]
         static void Main()

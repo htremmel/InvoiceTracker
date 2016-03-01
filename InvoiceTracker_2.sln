@@ -2,8 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceTracker", "InvoiceTracker.csproj", "{82BF33E3-199A-462A-ABD8-6DA1FD7C023F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4844FC74-3F97-42FE-838E-A722A237F068} = {4844FC74-3F97-42FE-838E-A722A237F068}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceTracker_2_Test", "InvoiceTracker_2_Test\InvoiceTracker_2_Test.csproj", "{034889C7-6EED-43F2-AF02-092DB68615FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTools", "..\..\DatabaseTools\DatabaseTools.csproj", "{4844FC74-3F97-42FE-838E-A722A237F068}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +24,10 @@ Global
 		{034889C7-6EED-43F2-AF02-092DB68615FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{034889C7-6EED-43F2-AF02-092DB68615FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{034889C7-6EED-43F2-AF02-092DB68615FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4844FC74-3F97-42FE-838E-A722A237F068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4844FC74-3F97-42FE-838E-A722A237F068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4844FC74-3F97-42FE-838E-A722A237F068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4844FC74-3F97-42FE-838E-A722A237F068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
