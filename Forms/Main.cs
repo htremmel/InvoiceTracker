@@ -13,7 +13,7 @@ namespace InvoiceTracker.Forms
 {
     public partial class Main : Form
     {
-        public InvoiceTrackerDB Model { get; set; }
+        public InvoiceTrackerDb Model { get; set; }
 
         public Main()
         {

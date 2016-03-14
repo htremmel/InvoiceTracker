@@ -17,7 +17,7 @@ namespace InvoiceTracker.Forms
     {
         ProjectController _cntrl;
 
-        public InvoiceTrackerDB Model { get; set; }
+        public InvoiceTrackerDb Model { get; set; }
 
         public NewProject()
         {
