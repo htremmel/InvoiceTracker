@@ -29,3 +29,5 @@ D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\obj\Debug\InvoiceTracker.Forms.Ma
 D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\obj\Debug\InvoiceTracker.Forms.NewProject.resources
 D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\obj\Debug\InvoiceTracker.Properties.Resources.resources
 D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\obj\Debug\InvoiceTracker.csproj.GenerateResource.Cache
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\bin\Debug\InvoiceTracker.exe.config
+D:\Documents\Dropbox\2-Projects\_Git_Root\InvoiceTracker\bin\Debug\InvoiceTracker.exe.config
