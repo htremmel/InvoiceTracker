@@ -13,17 +13,90 @@ namespace InvoiceTracker.Forms
 {
     public partial class Main : Form
     {
-        public InvoiceTrackerDb Model { get; set; }
+        public InvoiceTrackerDB Model { get; set; }
+        public LoggedInUser User { get; set; }
 
         public Main()
         {
             InitializeComponent();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        #region Support classes
+        class SummaryTreeView
         {
-            NewProject np = new NewProject() { Model = this.Model };
-            np.ShowDialog();
+            TreeView _listner;
+            LoggedInUser _user;
+            InvoiceTrackerDB _model;
+
+            public SummaryTreeView(LoggedInUser user, InvoiceTrackerDB model)
+            {
+                this._user = user;
+                this._model = model;
+            }
+
+            public void FillTreeView(TreeView listner)
+            {
+                this._listner = listner;
+                PopulateTreeviewListner();
+            }
+
+            private void PopulateTreeviewListner()
+            {
+                _listner.Nodes.Add(new UserTree(this._user, this._model));
+            }
+
+            class UserTree: TreeNode
+            {
+                LoggedInUser _user;
+                InvoiceTrackerDB _model;
+
+                public UserTree(LoggedInUser user, InvoiceTrackerDB model): base()
+                {
+                    this.Text = SetUserTreeNodeText();
+                    UserTreeFactory();
+                }
+
+                void UserTreeFactory()
+                {
+                    List<Project> projects = _user.GetProjects(_model);
+
+                    foreach (var proj in projects)
+                    {
+                        this.Nodes.Add(new ProjectNode(proj));
+                    }
+                }                
+
+                string SetUserTreeNodeText()
+                {
+                    return string.Format("{0}'s Projects", this._user.Information.FirstName);
+                }
+            }
+
+            class ProjectNode: TreeNode
+            {
+                public ProjectNode(Project project)
+                {
+
+                }
+                
+            }
+
+            class InvoiceNode
+            {
+            
+            }
+
+            class DeliverablesNode
+            {
+            
+            }
         }
+
+        #endregion
+
+        
+
+        
+
     }
 }

@@ -36,6 +36,10 @@
       <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="linq2db, Version=1.0.7.3, Culture=neutral, PublicKeyToken=f19f8aed7feff67e, processorArchitecture=MSIL">
+      <HintPath>packages\linq2db.1.0.7.3\lib\net45\linq2db.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -51,21 +55,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\IController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Database\IInvoiceTrackerDb.cs" />
-    <Compile Include="Database\IInvoiceTrackerTable.cs" />
-    <Compile Include="Database\InvoiceTrackerDb.cs" />
+    <Compile Include="Controllers\Controller.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AccessDatabase.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccessDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\InvoiceTrackerDB.cs" />
+    <Compile Include="Database\Relationships.cs" />
     <Compile Include="DataConnection.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataConnection.tt</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\InvoiceTrackerDbException.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewDeliverable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewDeliverable.Designer.cs">
+      <DependentUpon>NewDeliverable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewInvoice.Designer.cs">
+      <DependentUpon>NewInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewNTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewNTP.Designer.cs">
+      <DependentUpon>NewNTP.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewProject.cs">
       <SubType>Form</SubType>
@@ -73,14 +103,21 @@
     <Compile Include="Forms\NewProject.Designer.cs">
       <DependentUpon>NewProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceTrackerDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InvoiceTrackerDataSet.xsd</DependentUpon>
+    <Compile Include="Forms\NewSOW.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\NewSOW.Designer.cs">
+      <DependentUpon>NewSOW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceTrackerDirectory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\IView.cs" />
+    <Compile Include="LoggedInUser.cs" />
+    <Compile Include="Views\AccessDbView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccessDbView.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,22 +134,40 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Controllers\Controller.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Controller.generated.cs</LastGenOutput>
+    </None>
     <None Include="DataConnection.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DataConnection.generated.cs</LastGenOutput>
     </None>
-    <None Include="InvoiceTrackerDataSet.xsc">
-      <DependentUpon>InvoiceTrackerDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="InvoiceTrackerDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InvoiceTrackerDataSet.Designer.cs</LastGenOutput>
+    <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
+    <None Include="LinqToDB.Templates\DataModel.ttinclude" />
+    <None Include="LinqToDB.Templates\EditableObject.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Access.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Access.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.DB2.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Firebird.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Informix.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.MySql.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Oracle.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.PostgreSQL.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlCe.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SQLite.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlServer.SqlTypes.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlServer.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Sybase.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyPropertyChanged.ttinclude" />
+    <None Include="LinqToDB.Templates\PluralizationService.ttinclude" />
+    <None Include="LinqToDB.Templates\ReadMe.LinqToDB.md" />
+    <None Include="LinqToDB.Templates\T4Model.ttinclude" />
+    <None Include="LinqToDB.Templates\Validation.ttinclude" />
+    <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="InvoiceTrackerDataSet.xss">
-      <DependentUpon>InvoiceTrackerDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,6 +177,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Views\AccessDbView.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AccessDbView.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -130,12 +189,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="Plugins\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InvoiceTracker.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Database\AccessDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AccessDatabase.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

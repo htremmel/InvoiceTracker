@@ -17,3 +17,14 @@ D:\Documents\Dropbox\2-Projects\InvoiceTracker_2\InvoiceTracker_2_Test\bin\Debug
 D:\Documents\Dropbox\2-Projects\InvoiceTracker_2\InvoiceTracker_2_Test\bin\Debug\InvoiceTracker.pdb
 D:\Documents\Dropbox\2-Projects\InvoiceTracker_2\InvoiceTracker_2_Test\bin\Debug\linq2db.pdb
 D:\Documents\Dropbox\2-Projects\InvoiceTracker_2\InvoiceTracker_2_Test\bin\Debug\nunit.framework.xml
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\InvoiceTracker_2_Test.dll
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\InvoiceTracker_2_Test.pdb
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\InvoiceTracker.exe
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\linq2db.dll
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\nunit.framework.dll
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\InvoiceTracker.pdb
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\linq2db.pdb
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\bin\Debug\nunit.framework.xml
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\obj\Debug\InvoiceTracker_2_Test.csprojResolveAssemblyReference.cache
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\obj\Debug\InvoiceTracker_2_Test.dll
+D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\InvoiceTracker_2_Test\obj\Debug\InvoiceTracker_2_Test.pdb

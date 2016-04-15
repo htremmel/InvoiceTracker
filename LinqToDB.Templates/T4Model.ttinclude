@@ -196,7 +196,7 @@ static Action<GeneratedTextTransformation,Class> WriteBeginClass = (tt,cl) =>
 		tt.Write(" : ");
 		tt.Write(string.Join(", ", arr));
 	}
-	
+
 	tt.WriteLine("");
 	tt.WriteLine("{");
 };

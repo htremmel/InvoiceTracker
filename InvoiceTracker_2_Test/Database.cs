@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using InvoiceTracker.Database;
-using InvoiceTracker.Controllers;
-using InvoiceTracker.Views;
 using System.IO;
 using LinqToDB.Data;
+using System.Data;
+using LinqToDB;
 
 using NUnit.Framework;
 
@@ -16,41 +16,72 @@ namespace InvoiceTracker_2_Test
 {
     [TestFixture]
     public class ControllerTests
-    {
-        string connString;
-        
-        public InvoiceTrackerDB Model
+    {        
+        InvoiceTrackerDB Model
         {
-            get { return new InvoiceTrackerDB(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Documents\Dropbox\2-Projects\InvoiceTracker_2\InvoiceTracker.accdb"); }
+            get
+            {
+                return InvoiceTrackerDB.AccessDatabaseProvider(@"Provider=Microsoft.ACE.OLEDB.12.0;
+                    Data Source=D:\Dropbox\2-Projects\_Git_Root\InvoiceTracker\0-Database\InvoiceTracker.accdb;Persist Security Info=False");
+            }
+        }
+
+        string AccessDbPath
+        {
+            get
+            {
+                return Directory.GetParent(this.ExecutingAssemblyPath).ToString();
+            }
+        }
+
+        string ExecutingAssemblyPath
+        {
+            get
+            {
+                return Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
+            }
+        }
+
+        string DatabaseName
+        {
+            get
+            {
+                return "InvoiceTracker.accdb";
+            }
+        }        
+
+        [Test]
+        public void DoesItConnect()
+        {
+            using (var db = this.Model)
+            {
+                Assert.IsTrue(this.Model.Connection.State == ConnectionState.Open);
+            }
         }
 
         [Test]
-        void IsConnected()
+        public void CanItInsertAnActorRecord()
         {
-            
+            using (var db = this.Model)
+            {
+                Actor ac = new Actor()
+                {
+                    FirstName = "Test",
+                    LastName = "Tester"
+                };
+                db.InsertWithIdentity(ac);
+            }
         }
 
         [Test]
-        void IsClosed()
+        public void CanItQueryAProjectRecord()
         {
-
-        }
-
-        [Test]
-        public void Exists()
-        {
-            FileInfo fi = new FileInfo(@"D:\Documents\Dropbox\2-Projects\InvoiceTracker_2\InvoiceTracker.accdb");
-            Assert.IsTrue(fi.Exists);
-        }
-
-        [Test]
-        public void ControllerInsert()
-        {
-            ProjectController.Insert(new Project() {ProjectId = "1234",
-                                                    Name = "Test",
-                                                    Summary = "Test",
-                                                    SuperDistrict = "t"},
-                                                    this.Model);
+            using (var db = this.Model)
+            {
+                var proj = from p in db.Projects where p.ProjectId == "FCC0001239" select p;
+                Console.WriteLine(proj.Count());
+                Assert.IsNotNull(proj);
+            }
         }
     }
 }

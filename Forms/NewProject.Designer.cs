@@ -128,7 +128,6 @@
             this.Cancel.TabIndex = 2;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
-            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // Save
             // 
@@ -139,7 +138,6 @@
             this.Save.TabIndex = 2;
             this.Save.Text = "Save";
             this.Save.UseVisualStyleBackColor = true;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // NewProject
             // 
@@ -159,7 +157,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "NewProject";
             this.Text = "Create New Project";
-            this.Load += new System.EventHandler(this.NewProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

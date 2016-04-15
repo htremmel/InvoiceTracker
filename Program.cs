@@ -4,29 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InvoiceTracker.Forms;
+using InvoiceTracker.Database;
 
 namespace InvoiceTracker
 {
     static class Program
     {
+        public static InvoiceTrackerDB Model
+        {
+            get
+            {
+                return InvoiceTrackerDB.AccessDatabaseProvider(ConnfigurationStrings.AccessDb);
+            }
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            //string cs = ConnfigurationStrings.AccessDb;
-            using (var db = new InvoiceTracker.Database.InvoiceTrackerDB())
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Main m = new Main
-                            {
-                                Text = MainHeading(),
-                                Model = db
-                            };
-                Application.Run(m);
-            }            
+        {            
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Main m = new Main
+                        {
+                            Text = MainHeading(),
+                            Model = Program.Model
+                        };
+            Application.Run(m);                      
         }
 
         static string MainHeading()

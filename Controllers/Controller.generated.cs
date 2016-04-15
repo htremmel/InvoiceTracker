@@ -8,6 +8,7 @@ using System;
 using InvoiceTracker.Database;
 using InvoiceTracker.Views;
 using System.Linq;
+using LinqToDB;
 using System.Collections.Generic;
 
 namespace InvoiceTracker.Controllers
@@ -1387,7 +1388,7 @@ namespace InvoiceTracker.Controllers
 	    	if (p == null) Convert.ToInt32(this.Model.InsertWithIdentity(GetUser()));
 	    }
 
-	    public static void Insert(User user,InvoiceTrackerDB model)
+	    public static void Insert(LoggedInUser user,InvoiceTrackerDB model)
 	    {
 	    	var p = (from poco in model.Users where poco.Id.Equals(user.Id) select poco).FirstOrDefault();
 	    	if (p == null) Convert.ToInt32(model.InsertWithIdentity(user));
@@ -1397,7 +1398,7 @@ namespace InvoiceTracker.Controllers
 	    	this.Delete(GetUser());
 	    }
 
-	    public void Delete(User user)
+	    public void Delete(LoggedInUser user)
 	    {
 	    	this.Model.Users.Where(p => p.Id == View.Id).Delete();
 	    }
@@ -1407,7 +1408,7 @@ namespace InvoiceTracker.Controllers
 	    	this.Update(GetUser());
 	    }
 
-	    public void Update(User user)
+	    public void Update(LoggedInUser user)
 	    {
 	    	this.Model.Users.Where(p => p.Id == View.Id)
 	    		.Set(p => p.Id, View.Id)
@@ -1418,8 +1419,8 @@ namespace InvoiceTracker.Controllers
 
 	    public List<Database.User> Find(Predicate<Database.User> query)
 	    {
-	    	List<User> pocos = new List<User>();
-	    	foreach(User poco in this.Model.Users)
+	    	List<LoggedInUser> pocos = new List<LoggedInUser>();
+	    	foreach(LoggedInUser poco in this.Model.Users)
 	    	{
 	    		if(query(poco)) pocos.Add(poco);
 	    	}
@@ -1427,9 +1428,9 @@ namespace InvoiceTracker.Controllers
 	    }
 
 
-	    User GetUser()
+	    LoggedInUser GetUser()
 	    {
-	    	User poco = new User();
+	    	LoggedInUser poco = new LoggedInUser();
 	    	poco.Id = this.View.Id;
 	    	poco.Actor_Id = this.View.Actor_Id;
 	    	poco.ComputerName = this.View.ComputerName;
